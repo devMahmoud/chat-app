@@ -7,6 +7,7 @@ const {generateMessage, generateLocationMessage} = require('./utils/messages')
 const {addUser, getUser, removeUser, getUsersInRoom} = require('./utils/users')
 const app = express()
 const server = http.createServer(app)
+const port = process.env.PORT || 3000
 
 const io = socketio(server)
 io.on('connection', (socket) => {
@@ -67,6 +68,6 @@ app.get('', (req, res) => {
     res.send()
 })
 
-server.listen(3000, () => {
-    console.log('app is listening on port 3000')
+server.listen(port, () => {
+    console.log(`app is listening on port ${port}`)
 })
